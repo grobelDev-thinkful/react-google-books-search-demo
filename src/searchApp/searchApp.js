@@ -1,8 +1,17 @@
 import React, { Component } from 'react';
+import styled from 'styled-components'
 
-// const fetchData = async () => {
-//   return fetch('https://www.googleapis.com/books/v1/volumes?q=henry')
-// }
+const Form = styled.form`
+  padding: 3px;
+`;
+
+const Label = styled.label`
+  padding: 3px;
+`;
+
+const Input = styled.input`
+  padding: 3px;
+`;
 
 class SearchApp extends Component {
   constructor(props) {
@@ -29,7 +38,7 @@ class SearchApp extends Component {
     try {
       const data = await fetch(formData);
       const json = await data.json()
-      console.log(json);
+      // console.log(json);
 
       // let results = [];
       // Get test first item.
@@ -40,8 +49,8 @@ class SearchApp extends Component {
         }
       });
 
-      console.log(results);
-
+      // console.log(results);
+      this.props.handleSearch(results);
       // let testItem = json.items[0];
       // console.log(testItem);
       // let testItemParse = {
@@ -58,63 +67,21 @@ class SearchApp extends Component {
 
   }
 
-  // handleSubmit(e) {
-  //   e.preventDefault();
-  //   // alert('hi');
-  //   // const bookmark = (({title, url, description, rating}) => ({title, url, description, rating}))(this.state);
-  //   const url = 'https://www.googleapis.com/books/v1/volumes?q=henry';
-  //   const options = {
-  //     method: 'GET',
-  //     // body: JSON.stringify(bookmark),
-  //     // headers: {
-  //     //   "Content-Type": "application/json",
-  //     //   "Authorization": "Bearer $2a$10$ZhdeJefcb.5sx/DCmO/n8u5sJLcARAdbHw9tfm1mevGRq3s1.5DpW"
-  //     // }
-  //   };
-
-  //   fetch(url, options)
-  //     .then(res => {
-  //       if (!res.ok) {
-  //         throw new Error('Something went wrong, please try again later');
-  //       }
-  //       return res.json();
-  //     })
-  //     .then(data => {
-  //       // this.setState({
-  //       //   title: "",
-  //       //   url: "",
-  //       //   description: "",
-  //       //   rating: 1
-  //       // });
-  //       console.log(data);
-  //       // this.props.handleAdd(bookmark);
-  //       // let volumeInfo = data.items[0].volumeInfo;
-  //       // let saleInfo = data.items[0].saleInfo;
-  //       let results = this.processResults(data);
-  //       this.props.handleSearch(results);
-  //     })
-  //     .catch(err => {
-  //       this.setState({
-  //         error: err.message
-  //       });
-  //     });
-  // }
-
-
   render() {
     return (
-      <form className="addbookmark__form" onSubmit={e => this.handleSubmit(e)}>
-        <label htmlFor="search">Search:</label>
-        <input
+      <Form className="addbookmark__form" onSubmit={e => this.handleSubmit(e)}>
+        <Label htmlFor="search">Search:</Label>
+        <Input
           type="text"
           name="search"
           id="search"
           placeholder="Search"
           onChange={e => this.searchChanged(e.target.value)}
         />
-      </form>
+      </Form>
     );
   }
 }
 
 export default SearchApp;
+
