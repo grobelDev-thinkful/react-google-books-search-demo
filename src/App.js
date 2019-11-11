@@ -1,14 +1,25 @@
 import React, { Component } from 'react';
 import './App.css';
 
+import SearchApp from './SearchApp/SearchApp.js';
+
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      apple: 'sapple'
-      // bookmarks: [],
-      // showAddForm: false
+      results: []
     };
+  }
+
+  setResults(results) {
+    // console.log(results);
+    // console.log(volumeInfo);
+    // console.log(saleInfo);
+    console.log('setting results!');
+    // this.setState({
+    // bookmarks: [...this.state.bookmarks, bookmark],
+    // showAddForm: false
+    // });
   }
 
   render() {
@@ -16,8 +27,9 @@ class App extends Component {
       <div className="App" >
         <header className="App-header">
           <h1>Google Book Search</h1>
-          <p>{this.state.apple}</p>
-          <input></input>
+          <SearchApp
+            handleSearch={results => this.setResults(results)}
+          ></SearchApp>
         </header>
       </div>
     );
