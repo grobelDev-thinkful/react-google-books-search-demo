@@ -45,12 +45,6 @@ class App extends Component {
           <ResultsList
             results={this.state.results}
           ></ResultsList>
-          {/* <p>{this.state.results}</p> */}
-          {/* <li>
-          <p>testing</p>
-          <p>testing</p>
-          <p>testing</p>
-        </li> */}
         </Container>
       </div>
 
