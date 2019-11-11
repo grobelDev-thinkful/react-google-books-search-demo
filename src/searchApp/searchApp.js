@@ -23,7 +23,7 @@ class SearchApp extends Component {
 
   searchChanged(search) {
     this.setState({
-      search
+      search: search
     });
   }
 
@@ -34,7 +34,10 @@ class SearchApp extends Component {
   async handleSubmit(e) {
     e.preventDefault();
 
-    let formData = 'https://www.googleapis.com/books/v1/volumes?q=henry';
+    let searchValue = this.state.search;
+    // console.log(searchValue);
+
+    let formData = `https://www.googleapis.com/books/v1/volumes?q=${searchValue}`;
     try {
       const data = await fetch(formData);
       const json = await data.json()
