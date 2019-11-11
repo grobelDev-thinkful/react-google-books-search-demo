@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
 import './App.css';
+import styled, { css } from 'styled-components'
+
 
 import SearchApp from './SearchApp/SearchApp.js';
 import ResultsList from './ResultsList/ResultsList.js';
 
+const Container = styled.div`
+  padding: 20px;
+`;
 
 class App extends Component {
   constructor(props) {
@@ -32,20 +37,23 @@ class App extends Component {
   render() {
     return (
       <div className="App" >
-        <h1>Google Book Search</h1>
-        <SearchApp
-          handleSearch={results => this.setResults(results)}
-        ></SearchApp>
-        <ResultsList
-          results={this.state.results}
-        ></ResultsList>
-        {/* <p>{this.state.results}</p> */}
-        {/* <li>
+        <Container>
+          <h1>Google Book Search</h1>
+          <SearchApp
+            handleSearch={results => this.setResults(results)}
+          ></SearchApp>
+          <ResultsList
+            results={this.state.results}
+          ></ResultsList>
+          {/* <p>{this.state.results}</p> */}
+          {/* <li>
           <p>testing</p>
           <p>testing</p>
           <p>testing</p>
         </li> */}
+        </Container>
       </div>
+
     );
   }
 }
